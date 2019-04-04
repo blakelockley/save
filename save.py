@@ -9,7 +9,7 @@ print("Last commit:", last_commit_message)
 now = datetime.now()
 new_commit_message = "DEV " + now.strftime("%H:%M:%S %d-%m-%y")
 
-print("New commit message:", new_commit_message)
+print("New commit: ", new_commit_message)
 
 subprocess.call(["git", "add", "."])
 
@@ -30,3 +30,6 @@ else:
     # Previous commit was a regular commit -> create new DEV commit
 
     subprocess.call(["git", "commit", "-m", new_commit_message])
+
+
+subprocess.call(["git", "push", "-f", "origin", "master"])
