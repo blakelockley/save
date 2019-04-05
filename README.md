@@ -13,3 +13,22 @@ The script follows to paths of action:
 Once a commit is finalised in the traditional sense, the current DEV commit can be amended. Save will create a new DEV commit moving forward.
 
 **Save is not intended to be used to push to shared remote repos!**
+
+## Usage
+
+1. Add the 'save' folder to your path.
+
+2. Run `save` from your current project directory.
+
+## Useful Git Commands
+
+Stage all files of the current DEV commit:
+```
+git reset --soft HEAD^
+```
+    
+Convert current DEV commit to an actual commit:
+```
+git commit --amend -m <message>
+git push -f
+```
