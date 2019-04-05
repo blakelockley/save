@@ -1,8 +1,6 @@
 import subprocess, re
 from datetime import datetime
 
-print("Saving current work to DEV commit...")
-
 last_commit_message = subprocess.check_output(["git", "log", "--pretty=format:%s", "HEAD^..HEAD"]).decode('utf-8')
 print("Last commit:", last_commit_message)
 
@@ -32,4 +30,4 @@ else:
     subprocess.call(["git", "commit", "-m", new_commit_message])
 
 
-subprocess.call(["git", "push", "-f", "origin", "master"])
+subprocess.call(["git", "push", "-f"])

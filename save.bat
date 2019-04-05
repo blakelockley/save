@@ -1,1 +1,1 @@
-python C:\Users\blake.lockley\code\save\save.py
+python %~dp0\save.py
