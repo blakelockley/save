@@ -29,5 +29,8 @@ else:
 
     subprocess.call(["git", "commit", "-m", new_commit_message])
 
-
+# Update intermediate repo
 subprocess.call(["git", "push", "-f"])
+
+# Reset local changes to be reflected as satged
+subprocess.call(["git", "reset", "--soft", "HEAD~1"])
