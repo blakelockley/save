@@ -1,5 +1,8 @@
-import subprocess, re
+import subprocess, re, os
 from datetime import datetime
+
+if os.environ.get('DISABLE_AUTO_SAVE', None) == 'TRUE':
+    exit(0)
 
 last_commit_message = subprocess.check_output(["git", "log", "--pretty=format:%s", "HEAD^..HEAD"]).decode('utf-8')
 print("Last commit:", last_commit_message)
@@ -32,5 +35,6 @@ else:
 # Update intermediate repo
 subprocess.call(["git", "push", "-f"])
 
-# Reset local changes to be reflected as satged
-subprocess.call(["git", "reset", "--soft", "HEAD~1"])
+# Reset local changes to be reflected as satged if last commit was a dev commit
+if os.environ.get('AUTO_RESET', None) == 'TRUE':
+    subprocess.call(["git", "reset", "--soft", "HEAD~1"])
